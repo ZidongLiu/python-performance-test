@@ -1,0 +1,72 @@
+# Python Performance Testing Repository Rules
+
+## Project Overview
+
+This repository is for testing Python performance between versions 3.13, 3.14, and 3.14 threadfree. Focus on creating comprehensive benchmarks and performance analysis tools.
+
+## Code Style & Standards
+
+- Follow PEP 8 Python style guidelines
+- Use type hints for all function parameters and return values
+- Write comprehensive docstrings for all functions and classes
+- Use meaningful variable and function names
+- Prefer f-strings over .format() or % formatting
+- Use pathlib for file path operations
+- Handle exceptions explicitly with try/except blocks
+
+## Performance Testing Guidelines
+
+- Create separate test modules for each Python version comparison
+- Use appropriate benchmarking libraries (timeit, cProfile, memory_profiler)
+- Include both CPU-bound and I/O-bound performance tests
+- Test various data structures and algorithms
+- Measure execution time, memory usage, and CPU utilization
+- Generate detailed performance reports with visualizations
+
+## File Organization
+
+- Create separate directories for each Python version's tests
+- Use descriptive filenames that indicate the test purpose
+- Group related tests in modules
+- Create a main runner script to execute all benchmarks
+- Include configuration files for test parameters
+
+## Dependencies & Environment
+
+- Use virtual environments for each Python version
+- Create requirements.txt for each version
+- Document Python version requirements clearly
+- Use poetry or pip-tools for dependency management
+- Include environment setup scripts
+
+## Testing & Validation
+
+- Write unit tests for all benchmark functions
+- Validate results across different Python versions
+- Include statistical analysis of performance differences
+- Create regression tests to detect performance changes
+- Use pytest for test framework
+
+## Documentation
+
+- Document benchmark methodology and assumptions
+- Include performance analysis and conclusions
+- Create visualizations (charts, graphs) for results
+- Write clear setup and execution instructions
+- Document any system requirements or limitations
+
+## Performance Considerations
+
+- Minimize overhead in benchmark code
+- Use appropriate sample sizes for statistical significance
+- Account for system variability in measurements
+- Include warmup runs before actual measurements
+- Consider garbage collection impact on results
+
+## Output & Reporting
+
+- Generate structured output (JSON, CSV) for results
+- Create human-readable summary reports
+- Include performance comparison tables
+- Generate visual charts and graphs
+- Export results for further analysis
