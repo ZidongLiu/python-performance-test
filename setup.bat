@@ -32,9 +32,9 @@ echo   venv-3.14\Scripts\activate.bat        (Python 3.14)
 echo   venv-3.14-threadfree\Scripts\activate.bat  (Python 3.14 threadfree)
 echo.
 echo To run the same script with different versions:
-echo   venv-3.13\Scripts\python.exe example_benchmark.py
-echo   venv-3.14\Scripts\python.exe example_benchmark.py
-echo   venv-3.14-threadfree\Scripts\python.exe example_benchmark.py
+echo   venv-3.13\Scripts\python.exe benchmark.py
+echo   venv-3.14\Scripts\python.exe benchmark.py
+echo   venv-3.14-threadfree\Scripts\python.exe benchmark.py
 echo.
 echo Press any key to exit...
 pause >nul

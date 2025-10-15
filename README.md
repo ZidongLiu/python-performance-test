@@ -87,17 +87,17 @@ You can run the same script with different Python versions without switching env
 ### Windows CMD
 
 ```cmd
-venv-3.13\Scripts\python.exe example_benchmark.py
-venv-3.14\Scripts\python.exe example_benchmark.py
-venv-3.14-threadfree\Scripts\python.exe example_benchmark.py
+venv-3.13\Scripts\python.exe benchmark.py
+venv-3.14\Scripts\python.exe benchmark.py
+venv-3.14-threadfree\Scripts\python.exe benchmark.py
 ```
 
 ### Git Bash on Windows
 
 ```bash
-venv-3.13/Scripts/python.exe example_benchmark.py
-venv-3.14/Scripts/python.exe example_benchmark.py
-venv-3.14-threadfree/Scripts/python.exe example_benchmark.py
+venv-3.13/Scripts/python.exe benchmark.py
+venv-3.14/Scripts/python.exe benchmark.py
+venv-3.14-threadfree/Scripts/python.exe benchmark.py
 ```
 
 ## Test Plan
@@ -106,7 +106,7 @@ The following benchmarks are implemented to evaluate different aspects of Python
 
 1. **Fibonacci Sequence Calculation** - CPU-intensive recursive algorithm to test recursion performance and stack management
 2. **Bubble Sort Algorithm** - CPU-intensive iterative algorithm to test loop performance and array operations
-3. **List/Dict/Set Comprehensions** - Memory allocation and iteration patterns for data structure operations
+3. **list/Dict/Set Comprehensions** - Memory allocation and iteration patterns for data structure operations
 4. **Function Call Overhead** - Repeated function calls to measure call stack performance and overhead
 5. **Exception Handling** - try/except/finally clause performance to test error handling mechanisms
 6. **Object Instantiation** - Class object creation with varying complexity:
@@ -131,7 +131,7 @@ python-performance-test/
 ├── venv-3.13/                        # Python 3.13 virtual environment
 ├── venv-3.14/                        # Python 3.14 virtual environment
 ├── venv-3.14-threadfree/             # Python 3.14 threadfree virtual environment
-├── example_benchmark.py              # Example benchmark script
+├── benchmark.py              # Example benchmark script
 ├── setup.bat                         # Windows CMD setup script
 ├── setup-gitbash.sh                  # Git Bash setup script
 ├── pyproject.toml                    # Project configuration
@@ -154,16 +154,16 @@ python-performance-test/
 
    ```cmd
    REM Windows CMD
-   venv-3.13\Scripts\python.exe example_benchmark.py
-   venv-3.14\Scripts\python.exe example_benchmark.py
-   venv-3.14-threadfree\Scripts\python.exe example_benchmark.py
+   venv-3.13\Scripts\python.exe benchmark.py
+   venv-3.14\Scripts\python.exe benchmark.py
+   venv-3.14-threadfree\Scripts\python.exe benchmark.py
    ```
 
    ```bash
    # Git Bash on Windows
-   venv-3.13/Scripts/python.exe example_benchmark.py
-   venv-3.14/Scripts/python.exe example_benchmark.py
-   venv-3.14-threadfree/Scripts/python.exe example_benchmark.py
+   venv-3.13/Scripts/python.exe benchmark.py
+   venv-3.14/Scripts/python.exe benchmark.py
+   venv-3.14-threadfree/Scripts/python.exe benchmark.py
    ```
 
 3. **Compare performance results** across the different Python versions.
