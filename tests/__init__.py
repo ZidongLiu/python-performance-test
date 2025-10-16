@@ -11,6 +11,12 @@ from .list_comprehension_test import run_list_comprehension_benchmark, print_lis
 from .function_call_test import run_function_call_benchmark
 from .exception_test import run_exception_handling_benchmark
 from .object_test import run_object_instantiation_benchmark, run_attribute_access_benchmark, print_object_instantiation_results
+from .multithread_test import (
+    run_multithread_cpu_benchmark,
+    run_multithread_io_benchmark,
+    run_concurrent_futures_cpu_benchmark,
+    run_concurrent_futures_io_benchmark
+)
 
 __all__ = [
     'run_benchmark',
@@ -25,5 +31,9 @@ __all__ = [
     'run_exception_handling_benchmark',
     'run_object_instantiation_benchmark',
     'run_attribute_access_benchmark',
-    'print_object_instantiation_results'
+    'print_object_instantiation_results',
+    'run_multithread_cpu_benchmark',
+    'run_multithread_io_benchmark',
+    'run_concurrent_futures_cpu_benchmark',
+    'run_concurrent_futures_io_benchmark'
 ]
