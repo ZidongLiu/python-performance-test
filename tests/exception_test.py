@@ -2,8 +2,7 @@
 Exception handling benchmark test.
 """
 
-from typing import Tuple
-from .base_test import BaseBenchmarkTest, time_function
+from .base_test import run_benchmark
 
 
 def exception_handling_test(iterations: int) -> int:
@@ -30,25 +29,17 @@ def exception_handling_test(iterations: int) -> int:
     return result
 
 
-class ExceptionHandlingTest(BaseBenchmarkTest):
-    """Benchmark test for exception handling."""
+def run_exception_handling_benchmark(iterations: int = 10000, repeats: int = 1) -> dict:
+    """
+    Run exception handling benchmark.
     
-    def __init__(self, iterations: int = 10000, repeats: int = 1):
-        """
-        Initialize exception handling test.
+    Args:
+        iterations: Number of iterations (default: 10000)
+        repeats: Number of times to repeat the test (default: 1)
         
-        Args:
-            iterations: Number of iterations (default: 10000)
-            repeats: Number of times to repeat the test (default: 1)
-        """
-        super().__init__(f"Exception Handling ({iterations:,} iterations)", repeats)
-        self.iterations = iterations
-    
-    def run_test(self) -> Tuple[int, float]:
-        """
-        Run exception handling benchmark.
-        
-        Returns:
-            Tuple containing (accumulated_result, execution_time)
-        """
-        return time_function(exception_handling_test, self.iterations)
+    Returns:
+        Dictionary containing benchmark results
+    """
+    results = run_benchmark(f"Exception Handling ({iterations:,} iterations)", 
+                          exception_handling_test, iterations, repeats=repeats)
+    return results

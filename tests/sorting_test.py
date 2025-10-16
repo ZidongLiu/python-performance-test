@@ -2,8 +2,8 @@
 Sorting algorithm benchmark tests.
 """
 
-from typing import List, Tuple
-from .base_test import BaseBenchmarkTest, time_function
+from typing import List
+from .base_test import run_benchmark
 
 
 def create_test_array(size: int, reverse: bool = True) -> List[int]:
@@ -20,6 +20,7 @@ def create_test_array(size: int, reverse: bool = True) -> List[int]:
     if reverse:
         return list(range(size, 0, -1))
     return list(range(size))
+
 
 def bubble_sort(arr: list[int]) -> list[int]:
     """
@@ -42,46 +43,35 @@ def bubble_sort(arr: list[int]) -> list[int]:
     return arr
 
 
-class BubbleSortTest(BaseBenchmarkTest):
-    """Benchmark test for bubble sort algorithm."""
+def run_bubble_sort_benchmark(size: int = 1000, repeats: int = 1) -> dict:
+    """
+    Run bubble sort benchmark.
     
-    def __init__(self, size: int = 1000, repeats: int = 1):
-        """
-        Initialize bubble sort test.
+    Args:
+        size: Size of array to sort (default: 1000)
+        repeats: Number of times to repeat the test (default: 1)
         
-        Args:
-            size: Size of array to sort (default: 1000)
-            repeats: Number of times to repeat the test (default: 1)
-        """
-        super().__init__(f"Bubble Sort ({size} elements)", repeats)
-        self.size = size
-        self.test_array = create_test_array(size, reverse=True)
+    Returns:
+        Dictionary containing benchmark results
+    """
+    test_array = create_test_array(size, reverse=True)
+    results = run_benchmark(f"Bubble Sort ({size} elements)", bubble_sort, test_array, repeats=repeats)
+    return results
+
+
+def print_bubble_sort_results(results: dict) -> None:
+    """Print formatted bubble sort test results with first 5 elements."""
+    sorted_array = results['result']
+    print(f"\n{results['name']}")
+    print(f"   First 5 elements: {sorted_array[:5]}")
     
-    def run_test(self) -> Tuple[List[int], float]:
-        """
-        Run bubble sort benchmark.
-        
-        Returns:
-            Tuple containing (sorted_array, execution_time)
-        """
-        return time_function(bubble_sort, self.test_array)
-    
-    def print_results(self) -> None:
-        """Print formatted test results with first 5 elements."""
-        if not self.results:
-            self.execute()
-        
-        sorted_array = self.results['result']
-        print(f"\n{self.results['name']}")
-        print(f"   First 5 elements: {sorted_array[:5]}")
-        
-        if self.repeats == 1:
-            print(f"   Time: {self.results['execution_times'][0]:.6f} seconds")
-        else:
-            stats = self.results['statistics']
-            print(f"   Repeats: {self.repeats}")
-            print(f"   Mean Time: {stats['mean']:.6f} seconds")
-            print(f"   Min Time:  {stats['min']:.6f} seconds")
-            print(f"   Max Time:  {stats['max']:.6f} seconds")
-            print(f"   Std Dev:   {stats['std_dev']:.6f} seconds")
-            print(f"   Median:    {stats['median']:.6f} seconds")
+    if results['repeats'] == 1:
+        print(f"   Time: {results['execution_times'][0]:.6f} seconds")
+    else:
+        stats = results['statistics']
+        print(f"   Repeats: {results['repeats']}")
+        print(f"   Mean Time: {stats['mean']:.6f} seconds")
+        print(f"   Min Time:  {stats['min']:.6f} seconds")
+        print(f"   Max Time:  {stats['max']:.6f} seconds")
+        print(f"   Std Dev:   {stats['std_dev']:.6f} seconds")
+        print(f"   Median:    {stats['median']:.6f} seconds")

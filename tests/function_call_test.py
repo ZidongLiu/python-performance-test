@@ -2,8 +2,7 @@
 Function call overhead benchmark test.
 """
 
-from typing import Tuple
-from .base_test import BaseBenchmarkTest, time_function
+from .base_test import run_benchmark
 
 
 def function_call_overhead_test(iterations: int) -> int:
@@ -26,25 +25,17 @@ def function_call_overhead_test(iterations: int) -> int:
     return result
 
 
-class FunctionCallTest(BaseBenchmarkTest):
-    """Benchmark test for function call overhead."""
+def run_function_call_benchmark(iterations: int = 100000, repeats: int = 1) -> dict:
+    """
+    Run function call overhead benchmark.
     
-    def __init__(self, iterations: int = 100000, repeats: int = 1):
-        """
-        Initialize function call test.
+    Args:
+        iterations: Number of function calls (default: 100000)
+        repeats: Number of times to repeat the test (default: 1)
         
-        Args:
-            iterations: Number of function calls (default: 100000)
-            repeats: Number of times to repeat the test (default: 1)
-        """
-        super().__init__(f"Function Call Overhead ({iterations:,} calls)", repeats)
-        self.iterations = iterations
-    
-    def run_test(self) -> Tuple[int, float]:
-        """
-        Run function call overhead benchmark.
-        
-        Returns:
-            Tuple containing (sum_result, execution_time)
-        """
-        return time_function(function_call_overhead_test, self.iterations)
+    Returns:
+        Dictionary containing benchmark results
+    """
+    results = run_benchmark(f"Function Call Overhead ({iterations:,} calls)", 
+                          function_call_overhead_test, iterations, repeats=repeats)
+    return results

@@ -8,15 +8,19 @@ import sys
 import platform
 import argparse
 
-# Import benchmark tests from the tests package
+# Import benchmark functions from the tests package
 from tests import (
-    FibonacciTest,
-    BubbleSortTest,
-    ListComprehensionTest,
-    FunctionCallTest,
-    ExceptionHandlingTest,
-    ObjectInstantiationTest,
-    AttributeAccessTest
+    run_fibonacci_benchmark,
+    run_bubble_sort_benchmark,
+    print_bubble_sort_results,
+    run_list_comprehension_benchmark,
+    print_list_comprehension_results,
+    run_function_call_benchmark,
+    run_exception_handling_benchmark,
+    run_object_instantiation_benchmark,
+    run_attribute_access_benchmark,
+    print_object_instantiation_results,
+    print_benchmark_results
 )
 
 
@@ -38,32 +42,32 @@ def run_benchmarks(repeats: int = 1) -> None:
     print("=" * 60)
     
     # Test 1: Fibonacci
-    fibonacci_test = FibonacciTest(35, repeats)
-    fibonacci_test.print_results()
+    fibonacci_results = run_fibonacci_benchmark(35, repeats)
+    print_benchmark_results(fibonacci_results)
     
     # Test 2: Bubble Sort
-    bubble_sort_test = BubbleSortTest(5000, repeats)
-    bubble_sort_test.print_results()
+    bubble_sort_results = run_bubble_sort_benchmark(5000, repeats)
+    print_bubble_sort_results(bubble_sort_results)
     
     # Test 3: List Comprehension
-    list_comp_test = ListComprehensionTest(10000000, repeats)
-    list_comp_test.print_results()
+    list_comp_results = run_list_comprehension_benchmark(10000000, repeats)
+    print_list_comprehension_results(list_comp_results)
     
     # Test 4: Function Call Overhead
-    function_call_test = FunctionCallTest(10000000, repeats)
-    function_call_test.print_results()
+    function_call_results = run_function_call_benchmark(10000000, repeats)
+    print_benchmark_results(function_call_results)
     
     # Test 5: Exception Handling
-    exception_test = ExceptionHandlingTest(10000000, repeats)
-    exception_test.print_results()
+    exception_results = run_exception_handling_benchmark(10000000, repeats)
+    print_benchmark_results(exception_results)
     
     # Test 6: Object Instantiation
-    object_inst_test = ObjectInstantiationTest(1000000, repeats)
-    object_inst_test.print_results()
+    object_inst_results = run_object_instantiation_benchmark(1000000, repeats)
+    print_object_instantiation_results(object_inst_results)
     
     # Test 7: Attribute Access
-    attr_access_test = AttributeAccessTest(object_inst_test.results['result'], repeats)
-    attr_access_test.print_results()
+    attr_access_results = run_attribute_access_benchmark(object_inst_results['result'], repeats)
+    print_benchmark_results(attr_access_results)
     
     print("\n" + "=" * 60)
     print("Benchmark completed!")
